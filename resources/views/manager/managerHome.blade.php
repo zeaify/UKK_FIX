@@ -2,7 +2,7 @@
 @section('admin')
     <div class="container-fluid">
         <div class="row">
-            {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse fixed">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse fixed">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -13,9 +13,46 @@
                         </li>
                     </ul>
                 </div>
-            </nav> --}}
+            </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <form action="/manager/home/store" method="POST" class="form-control mt-4 mb-4">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nisn</label>
+                        <select name="nisn_id" id="nisn_id" class="form-control">
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->nisn }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Bulan Dibayar</label>
+                        <input type="text" name="bulan_dibayar" id="bulan_dibayar" class="form-control"
+                            placeholder="ex. Januari">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Tahun Dibayar</label>
+                        <input type="number" min="2020" name="tahun_dibayar" id="tahun_dibayar" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Spp</label>
+                        <select name="spp_id" id="spp_id" class="form-control">
+                            @foreach ($spp as $sp)
+                                <option value="{{ $sp->id }}">{{ $sp->nominal }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Jumlah Bayar</label>
+                        <select name="jumlah_bayar" id="jumlah_bayar" class="form-control">
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i * $user->spp->nominal }}">{{ $i }} Bulan {{ $i * $user->spp->nominal }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </form>
 
                 <h2>Data Siswa</h2>
                 <div class="table-responsive">
@@ -34,7 +71,7 @@
                         </thead>
                         <tbody>
                             @foreach ($pembayaran as $p)
-                                {{-- @if ($user->type !== 'admin' && $user->type !== 'pegawai') --}}
+                                @if ($user->type !== 'admin' && $user->type !== 'pegawai')
                                     <tr>
                                         <td>{{ $j++ }}</td>
                                         <td>{{ $p->nama_petugas }}</td>
@@ -45,7 +82,7 @@
                                         <td>{{ $p->nominal_spp }}</td>
                                         <td>{{ $p->jumlah_bayar }}</td>
                                     </tr>
-                                {{-- @endif --}}
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

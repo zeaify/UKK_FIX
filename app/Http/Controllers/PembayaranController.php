@@ -18,12 +18,12 @@ class PembayaranController extends Controller
         $spp = Spp::all();
         $users = Siswa::all();
         $pembayaran = Pembayaran::all();
-        // $petugas = User::find($pembayaran->petugas_id);
         return view('admin.pembayaran', compact(['users', 'i', 'j', 'spp','pembayaran']));
     }
 
     public function storePembayaran(Request $request)
     {
+        // dd($request);
         $siswa = Siswa::find($request);
         $nominal =  Spp::find($request['spp_id']);
         $siswa_nisn = $siswa[0]->nisn;

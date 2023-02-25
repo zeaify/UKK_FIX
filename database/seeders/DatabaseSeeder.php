@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $users = [
             [
                'nama_petugas'=>'Admin',
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                'username' => 'MeowMeow',
                'email'=>'manager@spp.com',
                'password'=> bcrypt('123456'),
-               'type'=> 0,
+               'type'=> 2,
             ],
         ];
 

@@ -80,6 +80,6 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:manager'])->group(function () {
-
-Route::get('/manager/home', [ManagerController::class, 'managerHome'])->name('manager.home');
+    Route::get('/manager/home', [ManagerController::class, 'managerHome'])->name('manager.home');
+    Route::post('/manager/home/store', [ManagerController::class, 'storePembayaran']);
 });
