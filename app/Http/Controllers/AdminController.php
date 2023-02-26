@@ -90,5 +90,12 @@ class AdminController extends Controller
         return view('admin.dtpetugas', compact(['users', 'i']));
     }
 
-    
+    public function print()
+    {
+        $j=1;
+        $pembayaran = Pembayaran::all();
+        return view('admin.cetak', compact(['pembayaran', 'j']));
+    }
+
+
 }

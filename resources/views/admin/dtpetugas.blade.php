@@ -24,7 +24,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/cetak" target="_blank">
                                 <span data-feather="layers" class="align-text-bottom"></span>
                                 Generate Laporan
                             </a>

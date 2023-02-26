@@ -72,6 +72,12 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::delete('/admin/pembayaran/{id}', [PembayaranController::class, 'deletePembayaran']);
     Route::get('/admin/pembayaran/{id}/edit', [PembayaranController::class, 'editPembayaran']);
     Route::put('/admin/pembayaran/{id}', [PembayaranController::class, 'updatePembayaran']);
+
+    /**
+     * Route Halaman Cetak
+     */
+
+    Route::get('/admin/cetak', [AdminController::class, 'print']);
 });
 
 /*------------------------------------------

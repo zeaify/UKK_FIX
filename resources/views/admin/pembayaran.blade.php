@@ -24,7 +24,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/cetak" target="_blank">
                                 <span data-feather="layers" class="align-text-bottom"></span>
                                 Generate Laporan
                             </a>
@@ -65,7 +65,8 @@
                         <label for="exampleInputEmail1" class="form-label">Jumlah Bayar</label>
                         <select name="jumlah_bayar" id="jumlah_bayar" class="form-control">
                             @for ($i = 1; $i <= 12; $i++)
-                                <option value="{{ $i * $user->spp->nominal }}">{{ $i }} Bulan {{ $i * $user->spp->nominal }}</option>
+                                <option value="{{ $i * $user->spp->nominal }}">{{ $i }} Bulan
+                                    {{ $i * $user->spp->nominal }}</option>
                             @endfor
                         </select>
                     </div>
